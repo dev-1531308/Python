@@ -1,0 +1,21 @@
+a{
+    color: black;
+    text-decoration: none;
+}
+a:visited { color:transparent !important; }
+
+.carousel .item img {
+    max-height: 200px !important; 
+    min-width: auto;
+  }
+
+#carouselPics{
+    margin-top: 70px;
+}
+
+.container{
+    text-align: center;
+}
+
+
+h1{margin-top: 10px; margin-bottom: 30px;}
