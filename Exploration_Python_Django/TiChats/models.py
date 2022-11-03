@@ -15,7 +15,7 @@ class Chat(models.Model):
   age = models.IntegerField()
   activitePref = models.CharField(max_length=50)
   couleur = models.ForeignKey(Couleur,on_delete=models.CASCADE,null= True)
-  photo = models.CharField(max_length=50)
+  photo = models.ImageField(upload_to='TiChats/', blank= False)
   #https://www.javatpoint.com/django-image-upload regarder pour image upload
 
   def __str__(self):

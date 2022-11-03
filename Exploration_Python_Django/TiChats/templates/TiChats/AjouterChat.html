@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Formulaire adoption{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<h2>Ajouter un chat</h2>
+
+<form enctype="multipart/form-data" action="" method="post" class="form">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Ajouter</button>
+    <a href="{% url 'AjouterCouleur' %}">Ajouter une couleur</a>
+</form>
+
+{% endblock %}

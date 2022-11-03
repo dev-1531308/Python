@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Exploration_Python_Django"
+    ]
+}
