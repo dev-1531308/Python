@@ -13,9 +13,28 @@ a:visited { color:transparent !important; }
     margin-top: 70px;
 }
 
-.container{
-    text-align: center;
+
+html, body {
+    margin: 0;
+    height: 100%;
+    min-height: 100%;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header,
+footer {
+    flex: none;
+}
+
+main {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    flex: auto;
+    margin-bottom: 30px;
+}
 
 h1{margin-top: 10px; margin-bottom: 30px;}

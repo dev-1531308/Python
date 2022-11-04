@@ -15,12 +15,15 @@
   <div class="card-body">
       <img src="{{c.photo.url}}" class="card-img-top" alt="...">
       <h5 class="card-title">{{c.nom}}</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Âge : {{c.age}}</li>
-      <li class="list-group-item">Couleur : {{c.couleur}}</li>
-      <li class="list-group-item">Activité préférée : {{c.activitePref}}</li>
-    </ul>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Âge : {{c.age}}</li>
+        <li class="list-group-item">Couleur : {{c.couleur}}</li>
+        <li class="list-group-item">Activité préférée : {{c.activitePref}}</li>
+      </ul>
+      <a href="{% url 'AfficherChat' c.id %}" class="btn btn-primary">Afficher</a>
+      <a href="{% url 'ModifierChat' c.id %}" class="btn btn-primary">Modifier</a>
+      <a href="{% url 'ChatEstAdopted' c.id %}" class="btn btn-primary">Adoption</a>
+  </div>
 </div>
 {% endfor %} 
 

@@ -12,7 +12,7 @@ class ChatForm(forms.ModelForm):
 
         model = Chat
 
-        fields = [ "nom", "age","activitePref", "couleur","photo"]
+        fields = [ "nom", "age", "ageString","activitePref", "couleur","photo"]
 
 
 

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Adoption{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<h2>Adoption de {{chat.nom}}</h2>
+
+<form enctype="multipart/form-data" action="" method="post" class="form">
+    {% csrf_token %}
+    <h3>Voulez-vous confirmer l'adoption de {{chat.nom}} ?</h3>
+    <button type="submit">Confirmer l'adoption</button>
+    <a href="{% url 'ListeChats' %}">Annuler</a>
+</form>
+
+{% endblock %}

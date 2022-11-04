@@ -6,13 +6,36 @@ from TiChats.forms import ChatForm, CouleurForm
 from . import models
 
 # Create your views here.
-def index_view(request): return render(request,'TiChats/index.html')
+def index_view(request): 
+    chats = models.Chat.objects.all()
+    context = {
+        'chats': chats
+    }    
+    return render(request,'TiChats/index.html',context)
+
 def list_view(request):
     chats = models.Chat.objects.all()
     context = {
         'list_chats': chats
     }
     return render(request,'TiChats/ListeChats.html', context)
+
+def chat_view(request, id):
+    chat = models.Chat.objects.get(id=id)
+    context = {
+        'chat': chat
+    }
+    return render(request,'TiChats/AfficherChat.html', context)
+
+def chat_adopted_view(request, id):
+    chat = models.Chat.objects.get(id=id)
+    context = {
+        'chat': chat
+    }
+    if request.method == 'POST':
+        chat.delete()
+        return redirect('ListeChats')
+    return render(request,'TiChats/ChatEstAdopted.html',context)
 
 
 def form_view(request): return render(request,'TiChats/AdoptionForm.html')
@@ -50,3 +73,17 @@ def ajouter_couleur_view(request):
         }
         
     return render(request,'TiChats/AjouterCouleur.html',context)
+
+def modifier_chat_view(request, id):
+    chat = models.Chat.objects.get(id=id)
+    if request.method == 'POST':
+        AjouterChat = ChatForm(request.POST, instance=chat)
+        if AjouterChat.is_valid():
+            # update the existing `Band` in the database
+            AjouterChat.save()
+            # redirect to the detail page of the `Band` we just updated
+            return redirect('ListeChats')
+    else:
+        AjouterChat = ChatForm(instance=chat)
+
+    return render(request,'TiChats/ModifierChat.html', {'form': AjouterChat})
