@@ -4,16 +4,16 @@
 {% block content %}
 {% load static %}
 
-<div class="col-md-12">
+<div class="col-md-12" style="text-align: center;">
     <h1>Bienvenue à l'agence d'adoption en ligne !</h1>
     <h2>Chats en vedette !</h2>
 </div>
-<div class="row" id="carouselPics">
+<div class="container" style="display: flex;flex-wrap: wrap;" id="carouselPics">
     <div class="col">
         <div id="carouselExampleControls" class="carousel slide" interval="false">
             <div class="carousel-inner">
               {%for c in chats|slice:":3" %}
-                <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{ forloop.counter }}" data-bs-interval="0" >
+                <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" id="slide{{ forloop.counter }}" data-bs-interval="0">
                   <img src="{{c.photo.url}}" class="d-block w-100" alt="Aucune image">
                   <div class="card" style="text-align: left;">
                       <div class="card-body">

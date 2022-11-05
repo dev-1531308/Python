@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
-{% block title %}Adoption{% endblock %}
+{% block title %}Adopter {{chat.nom}}{% endblock %}
 
 {% block content %}
 {% load static %}
 
-<h2>Adoption de {{chat.nom}}</h2>
+<h2 style="text-align: center;">Adoption de {{chat.nom}}</h2>
 
 <form enctype="multipart/form-data" action="" method="post" class="form">
     {% csrf_token %}
-    <h3>Voulez-vous confirmer l'adoption de {{chat.nom}} ?</h3>
-    <button type="submit">Confirmer l'adoption</button>
-    <a href="{% url 'ListeChats' %}">Annuler</a>
+    <h3 style="text-align: center;">Voulez-vous confirmer l'adoption de {{chat.nom}} ?</h3>
+    <div class="container" style="text-align: center;"> 
+        <img src="{{chat.photo.url}}" class="card-img-top" alt="...">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Âge : {{chat.age}}</li>
+          <li class="list-group-item">Couleur : {{chat.couleur}}</li>
+          <li class="list-group-item">Activité préférée : {{chat.activitePref}}</li>
+        </ul>
+        <button type="submit" class="btn btn-primary">Confirmer l'adoption</button>
+        <a href="{% url 'ListeChats' %}" class="btn btn-primary">Annuler</a>
+</div>
 </form>
 
 {% endblock %}

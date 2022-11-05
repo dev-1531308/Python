@@ -4,13 +4,16 @@
 {% block content %}
 {% load static %}
 
-<h2>Modifier un chat</h2>
+<h2 style="text-align: center;">Modifier un chat</h2>
 
-<form enctype="multipart/form-data" action="" method="post" class="form">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Modifier</button>
-    <a href="{% url 'AjouterCouleur' %}">Ajouter une couleur</a>
-</form>
+<div class="container" style="text-align: center;">
+
+    <form enctype="multipart/form-data" action="" method="post" class="form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Modifier</button>
+        <a href="{% url 'AjouterCouleur' %}">Ajouter une couleur</a>
+    </form>
+</div>
 
 {% endblock %}
