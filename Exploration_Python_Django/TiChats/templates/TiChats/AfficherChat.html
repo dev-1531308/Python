@@ -13,7 +13,9 @@
           <li class="list-group-item">Couleur : {{chat.couleur}}</li>
           <li class="list-group-item">Activité préférée : {{chat.activitePref}}</li>
         </ul>
-        <a href="{% url 'ModifierChat' chat.id %}" class="btn btn-primary">Modifier</a>
+        {% if user.is_staff %}
+        <a href="{% url 'ModifierChat' c.id %}" class="btn btn-primary">Modifier</a>
+        {% endif %}
         <a href="{% url 'ChatEstAdopted' chat.id %}" class="btn btn-primary">Adoption</a>
 </div>
 

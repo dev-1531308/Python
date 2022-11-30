@@ -21,8 +21,10 @@
               <li class="list-group-item">Activité préférée : {{c.activitePref}}</li>
             </ul>
             <a href="{% url 'AfficherChat' c.id %}" class="btn btn-primary">Afficher</a>
+            {% if user.is_staff %}
             <a href="{% url 'ModifierChat' c.id %}" class="btn btn-primary">Modifier</a>
             <a href="{% url 'ChatEstAdopted' c.id %}" class="btn btn-primary">Adoption</a>
+            {% endif %}
         </div>
     </div>
     {% endfor %} 

@@ -2,6 +2,9 @@ from multiprocessing import context
 from optparse import Values
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login as auth_login
+from .forms import RegisterForm
 from TiChats.forms import ChatForm, CouleurForm
 from . import models
 
@@ -27,6 +30,7 @@ def chat_view(request, id):
     }
     return render(request,'TiChats/AfficherChat.html', context)
 
+@login_required
 def chat_adopted_view(request, id):
     chat = models.Chat.objects.get(id=id)
     context = {
@@ -37,8 +41,9 @@ def chat_adopted_view(request, id):
         return redirect('ListeChats')
     return render(request,'TiChats/ChatEstAdopted.html',context)
 
-
-def form_view(request): return render(request,'TiChats/AdoptionForm.html')
+@login_required
+def form_view(request):
+    return render(request,'TiChats/AdoptionForm.html')  
 
 def ajouter_chat_view(request):
     if request.method == "POST":
@@ -87,3 +92,16 @@ def modifier_chat_view(request, id):
         AjouterChat = ChatForm(instance=chat)
 
     return render(request,'TiChats/ModifierChat.html', {'form': AjouterChat})
+
+
+def register_view(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('Index')
+    else:
+        form = RegisterForm()
+    
+    return render(request, 'TiChats/Register.html', {'form': form})
